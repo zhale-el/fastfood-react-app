@@ -39,7 +39,7 @@ const Category = () => {
   };
 
   return (
-    <nav className="container mt-n5" style={{ fontSize: "18px" }}>
+    <nav className="container mt-n5">
       <div
         className="d-flex align-items-center bg-white rounded-3 shadow-lg py-4"
         style={{ height: "80px" }}
