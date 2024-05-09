@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../axios";
 import Loading from "../loading/Loading";
+import SearchBar from "../searchBar/SearchBar";
 
-const Category = ({ filterItems }) => {
+const Category = ({ filterItems, children }) => {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
 
@@ -21,24 +22,27 @@ const Category = ({ filterItems }) => {
     }
 
     return (
-      <ul className="nav">
-        <li className="nav-item" onClick={() => filterItems()}>
-          <a href="#" className="nav-link">
-            همه ی فست فود ها
-          </a>
-        </li>
-        {categories.map((category) => (
-          <li
-            className="nav-item"
-            key={category.id}
-            onClick={() => filterItems(category.id)}
-          >
+      <div className="ps-3 w-100 d-flex align-items-center justify-content-between gap-5">
+        <ul className="nav">
+          <li className="nav-item" onClick={() => filterItems()}>
             <a href="#" className="nav-link">
-              {category.name}
+              همه ی فست فود ها
             </a>
           </li>
-        ))}
-      </ul>
+          {categories.map((category) => (
+            <li
+              className="nav-item"
+              key={category.id}
+              onClick={() => filterItems(category.id)}
+            >
+              <a href="#" className="nav-link">
+                {category.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {children}
+      </div>
     );
   };
 
